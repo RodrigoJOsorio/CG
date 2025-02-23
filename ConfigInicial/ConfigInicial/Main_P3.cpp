@@ -1,3 +1,9 @@
+/*
+* Práctica 03
+* Osorio Angeles Rodrigo Jafet
+* Fecha entrega: xx de febrero de 2025
+* 318008893
+*/
 #include<iostream>
 
 //#define GLEW_STATIC
@@ -29,7 +35,8 @@ int main() {
 
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Proyecciones y transformaciones basicas", nullptr, nullptr);
+	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, 
+		"Osorio Angeles Rodrigo Jafet --Practica 03--", nullptr, nullptr);
 
 	int screenWidth, screenHeight;
 
@@ -218,9 +225,10 @@ int main() {
 		glm::mat4 model=glm::mat4(1);
 		glm::mat4 view=glm::mat4(1);
 	
-	    view = glm::translate(view, glm::vec3(0.0f,0.0f,-12.0f));
-		model = glm::rotate( model, 0.5f, glm::vec3( 0.0f, 1.0f, 0.0f ) ); // use to compare orthographic and perspective projection
-		model = glm::scale(model, glm::vec3(2.0f, 3.0f, 1.0f));
+	    view = glm::translate(view, glm::vec3(0.0f,0.0f,-20.0f));
+		model = glm::translate(model, glm::vec3(1.5f, 0.0f, 0.0f));
+		model = glm::rotate( model, 0.5f, glm::vec3( 0.0f, 0.5f, 0.0f ) ); // use to compare orthographic and perspective projection
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
 		//view = glm::translate( view, glm::vec3( screenWidth / 2, screenHeight / 5,-800.0f ) ); // use with orthographic projection
 		
 		GLint modelLoc = glGetUniformLocation(ourShader.Program, "model");
@@ -234,18 +242,76 @@ int main() {
 
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
+		
+		////creación del cubo previo
+		//model = glm::mat4(1);
+		//model = glm::translate(model,glm::vec3(5.0f, 0.0f, 0.0f));
+		////Aplicando herramientas de tranformación a nuestro objeto creado
+		//model = glm::rotate(model, 45.0f, glm::vec3(0.0f, 1.0f, 1.0f)); // use to compare orthographic and perspective projection
+		//model = glm::scale(model, glm::vec3(8.0f, 1.0f, 5.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); //se manda información al shader
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//Cubos apilados 7 nombre RODRIGO
 		model = glm::mat4(1);
-		model = glm::translate(model,glm::vec3(5.0f, 0.0f, 0.0f));
 		//Aplicando herramientas de tranformación a nuestro objeto creado
-		model = glm::rotate(model, 45.0f, glm::vec3(0.0f, 1.0f, 1.0f)); // use to compare orthographic and perspective projection
-		model = glm::scale(model, glm::vec3(8.0f, 1.0f, 5.0f));
+		model = glm::translate(model,glm::vec3(6.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, 2.5f, glm::vec3(0.0f, 0.5f, 0.0f)); // use to compare orthographic and perspective projection
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); //se manda información al shader
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
+		//tercer cubo
+		model = glm::mat4(1);
+		//Aplicando herramientas de tranformación a nuestro objeto creado
+		model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, 55.0f, glm::vec3(0.0f, 0.1f, 0.0f)); // use to compare orthographic and perspective projection
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
 
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); //se manda información al shader
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//cuarto cubo
+		model = glm::mat4(1);
+		//Aplicando herramientas de tranformación a nuestro objeto creado
+		model = glm::translate(model, glm::vec3(-7.5f, 0.0f, 0.0f));
+		model = glm::rotate(model, 2.3f, glm::vec3(0.0f, 0.3f, 0.0f)); // use to compare orthographic and perspective projection
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); //se manda información al shader
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//quinto cubo
+		model = glm::mat4(1);
+		//Aplicando herramientas de tranformación a nuestro objeto creado
+		model = glm::translate(model, glm::vec3(-2.0f, 4.0f, 0.0f));
+		model = glm::rotate(model, 0.5f, glm::vec3(1.0f, 0.0f, 0.0f)); // use to compare orthographic and perspective projection
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); //se manda información al shader
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//sexto cubo
+		model = glm::mat4(1);
+		//Aplicando herramientas de tranformación a nuestro objeto creado
+		model = glm::translate(model, glm::vec3(2.0f, 4.0f, 0.0f));
+		model = glm::rotate(model, 90.0f, glm::vec3(0.5f, 0.0f, 0.0f)); // use to compare orthographic and perspective projection
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); //se manda información al shader
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//Septimo cubo
+		model = glm::mat4(1);
+		//Aplicando herramientas de tranformación a nuestro objeto creado
+		model = glm::translate(model, glm::vec3(0.0f, 8.0f, 0.0f));
+		model = glm::rotate(model, 0.5f, glm::vec3(1.0f, 0.0f, 0.0f)); // use to compare orthographic and perspective projection
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); //se manda información al shader
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		glBindVertexArray(0);
-		
 
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
@@ -257,8 +323,6 @@ int main() {
 
 	glfwTerminate();
 	return EXIT_SUCCESS;
-
-  
 
 }
 
