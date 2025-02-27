@@ -92,14 +92,14 @@ int main() {
 	    -0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
 	    -0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,
 		
-		 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,1.0f,
+		 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,1.0f,// Cara derecha
 		 0.5f, -0.5f, -0.5f,  0.0f, 0.0f,1.0f,
 		 0.5f,  0.5f, -0.5f,  0.0f, 0.0f,1.0f,
 		 0.5f,  0.5f, -0.5f,  0.0f, 0.0f,1.0f,
 		 0.5f,  0.5f,  0.5f,  0.0f, 0.0f,1.0f,
 		 0.5f,  -0.5f, 0.5f, 0.0f, 0.0f,1.0f,
       
-		-0.5f,  0.5f,  0.5f,  1.0f, 1.0f,0.0f,
+		-0.5f,  0.5f,  0.5f,  1.0f, 1.0f,0.0f,// Cara izquierda
 		-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,0.0f,
 		-0.5f, -0.5f, -0.5f,  1.0f, 1.0f,0.0f,
 		-0.5f, -0.5f, -0.5f,  1.0f, 1.0f,0.0f,
@@ -187,34 +187,35 @@ int main() {
 		glUniformMatrix4fv(projecLoc, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-	
+
 
 		glBindVertexArray(VAO);
 	
 	    model = glm::mat4(1.0f);
 
-		//definimos la creación de una mesa, primero la dimensión de la mesa 
-		model = glm::scale(model, glm::vec3(2.0f, 0.1f, 2.0f)); //ancho, grosor y profundidad
-		model = glm::translate(model, glm::vec3(0.0f, 0.6f, 0.0f));
+		//creación de Squirtle 
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f)); //ancho, grosor y profundidad
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 		
 		
 		//se debe iniciar la matriz de modelo en 1.0, una matriz central
-		//pata 1 derecha
-		model = glm::mat4(1.0f);
-		//se define las dimensiones de la pata de la mesa
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f));
-		model = glm::translate(model, glm::vec3(10.0f, -0.6f, 0.0f)); //posicionar la patita
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); // información al shader
-		glDrawArrays(GL_TRIANGLES, 0, 36);	//dibujo del objeto creado
+		////pata 1 derecha
+		//model = glm::mat4(1.0f);
+		////se define las dimensiones de la pata de la mesa
+		//model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f));
+		//model = glm::translate(model, glm::vec3(10.0f, -0.6f, 0.0f)); //posicionar la patita
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); // información al shader
+		//glDrawArrays(GL_TRIANGLES, 0, 36);	//dibujo del objeto creado
 
-		//pata 2 
-		model = glm::mat4(1.0f); //nueva matriz centralizada
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //escalamiento de la caja
-		model = glm::translate(model, glm::vec3(-10.0f, -0.6f, 0.0f)); //posicionar la patita
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); // información al shader
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		////pata 2 
+		//model = glm::mat4(1.0f); //nueva matriz centralizada
+		//model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //escalamiento de la caja
+		//model = glm::translate(model, glm::vec3(-10.0f, -0.6f, 0.0f)); //posicionar la patita
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); // información al shader
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		////pata 3
 		//model = glm::mat4(1.0f); //nueva matriz centralizada

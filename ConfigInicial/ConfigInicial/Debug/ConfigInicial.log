@@ -1,11 +1,3 @@
 ﻿  Main_Modelado.cpp
-  Squirtle.cpp
-  Generando código...
-Squirtle.obj : error LNK2005: ya se definió "void __cdecl Inputs(struct GLFWwindow *)" (?Inputs@@YAXPAUGLFWwindow@@@Z) en Main_Modelado.obj
-Squirtle.obj : error LNK2005: ya se definió _main en Main_Modelado.obj
-Squirtle.obj : error LNK2005: ya se definió "float movX" (?movX@@3MA) en Main_Modelado.obj
-Squirtle.obj : error LNK2005: ya se definió "float movY" (?movY@@3MA) en Main_Modelado.obj
-Squirtle.obj : error LNK2005: ya se definió "float movZ" (?movZ@@3MA) en Main_Modelado.obj
-Squirtle.obj : error LNK2005: ya se definió "float rot" (?rot@@3MA) en Main_Modelado.obj
 LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
-C:\Github\CG\ConfigInicial\Debug\ConfigInicial.exe : fatal error LNK1169: se encontraron uno o más símbolos definidos simultáneamente
+  ConfigInicial.vcxproj -> C:\Github\CG\ConfigInicial\Debug\ConfigInicial.exe
