@@ -37,6 +37,14 @@ dedo2 = 0.0f,
 dedo3 = 0.0f,
 dedo4 = 0.0f;
 
+// Rango de movimiento para las variables
+float minX = -100.0f, maxX = 100.0f;
+float minY = -100.0f, maxY = 100.0f;
+float minZ = -100.0f, maxZ = 100.0f;
+float minRot = -180.0f, maxRot = 180.0f;
+float minAngle = -90.0f, maxAngle = 90.0f;  // Para hombro, codo, muñeca, y dedos
+
+
 int main() {
 	glfwInit();
 	//Verificación de compatibilidad 
@@ -280,104 +288,137 @@ int main() {
 		//Model Dedo1 Falange medial
 		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(dedo2), glm::vec3(0.0f, 0.0f, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 0.17f));
-		color = glm::vec3(0.0f, 1.0f, 1.0f);
+		modelTemp = model = glm::translate(model, glm::vec3(0.4f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.3f, 0.17f));
+		color = glm::vec3(0.5f, 1.0f, 0.7f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);//E
 
 		////Model Dedo1 Falange Distal
-		//model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f));
-		//model = glm::rotate(model, glm::radians(dedo2), glm::vec3(0.0f, 0.0f, 1.0f));
-		//modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		//model = glm::scale(model, glm::vec3(0.7f, 0.3f, 0.175f));
-		//color = glm::vec3(0.0f, 1.0f, 1.0f);
-		//glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//glDrawArrays(GL_TRIANGLES, 0, 36);//E
+		model = glm::translate(modelTemp, glm::vec3(0.4f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(dedo3), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.2f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.3f, 0.17f));
+		color = glm::vec3(1.0f, 0.0f, 0.7f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);//G
 
 
 
 		//Model Dedo2 Falange Proximal
 		model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.35f, 0.1f));
-		model = glm::rotate(model, glm::radians(dedo3), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(dedo1), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 0.17f));
-		color = glm::vec3(1.0f, 0.0f, 1.0f);
+		color = glm::vec3(0.0f, 1.0f, 0.0f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);//F
 
 		//Model Dedo2 Falange medial
 		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(dedo4), glm::vec3(0.0f, 0.0f, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 0.17f));
+		model = glm::rotate(model, glm::radians(dedo2), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.4f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.3f, 0.17f));
 		color = glm::vec3(0.5f, 1.0f, 0.7f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);//G
 
 		//Model Dedo2 Falange Distal
-
+		model = glm::translate(modelTemp, glm::vec3(0.4f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(dedo3), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.2f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.3f, 0.17f));
+		color = glm::vec3(1.0f, 0.0f, 0.7f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);//G
 
 
 
 		//Model Dedo3 Falange Proximal
 		model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.35f, 0.1f));
-		model = glm::rotate(model, glm::radians(dedo3), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(dedo1), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, -0.25f));
 		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 0.17f));
-		color = glm::vec3(0.0f, 0.0f, 1.0f);
+		color = glm::vec3(0.0f, 1.0f, 0.0f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);//F
 
 		//Model Dedo3 Falange medial
 		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(dedo4), glm::vec3(0.0f, 0.0f, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 0.17f));
-		color = glm::vec3(0.8f, 0.5f, 0.5f);
+		model = glm::rotate(model, glm::radians(dedo2), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.4f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.3f, 0.17f));
+		color = glm::vec3(0.5f, 1.0f, 0.7f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);//G
 
 		//Model Dedo3 Falange Distal
+		model = glm::translate(modelTemp, glm::vec3(0.4f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(dedo3), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.2f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.3f, 0.17f));
+		color = glm::vec3(1.0f, 0.0f, 0.7f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);//G
 
 
 		//Model Dedo4 Falange Proximal
 		model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.35f, 0.1f));
-		model = glm::rotate(model, glm::radians(dedo3), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(dedo1), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, -0.5f));
 		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 0.17f));
-		color = glm::vec3(1.0f, 0.0f, 0.0f);
+		color = glm::vec3(0.0f, 1.0f, 0.0f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);//F
 
 		//Model Dedo4 Falange medial
 		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(dedo4), glm::vec3(0.0f, 0.0f, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 0.17f));
-		color = glm::vec3(0.8f, 0.23456f, 0.8756f);
+		model = glm::rotate(model, glm::radians(dedo2), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.4f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.3f, 0.17f));
+		color = glm::vec3(0.5f, 1.0f, 0.7f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);//G
+
+		//Model Dedo4 Falange Distal
+		model = glm::translate(modelTemp, glm::vec3(0.4f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(dedo3), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.2f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.3f, 0.17f));
+		color = glm::vec3(1.0f, 0.0f, 0.7f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);//G
 
 
-
 		//Model Dedo Pulgar, Falange 1 -1.5 y 0.6 
-		model = glm::translate(modelTemp2, glm::vec3(0.25f, -0.6f, 0.5f));
-		model = glm::rotate(model, glm::radians(dedo3), glm::vec3(0.0f, 0.0f, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 0.17f));
+		model = glm::translate(modelTemp2, glm::vec3(0.25f, -0.34f, 0.5f));
+		model = glm::rotate(model, glm::radians(dedo1), glm::vec3(0.0f, 0.0f, -1.0f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.4f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.3f, 0.17f));
 		color = glm::vec3(1.0f, 0.0f, 1.0f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//F
+		glDrawArrays(GL_TRIANGLES, 0, 36);//
+
+		model = glm::translate(modelTemp, glm::vec3(0.4f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(dedo2), glm::vec3(0.0f, 0.0f, -1.0f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.2f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.3f, 0.17f));
+		color = glm::vec3(0.0f, 1.0f, 1.0f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);//
 
 
 
@@ -397,60 +438,129 @@ int main() {
 	return EXIT_SUCCESS;
  }
 
- //controlar movimiento en la ventana 
- void Inputs(GLFWwindow *window) {
-	 if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)  //GLFW_RELEASE
-		 glfwSetWindowShouldClose(window, true);
-	 if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-		 movX += 0.002f;
-	 if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-		 movX -= 0.002f;
-	 if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) //UP
-		 movY += 0.002f;
-	 if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) //DOWN
-		 movY -= 0.002f;
-	 if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		 movZ -= 0.002f;
-	 if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		 movZ += 0.002f;
-	 if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
-		 rot += 0.015f;
-	 if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
-		 rot -= 0.015f;
-	 //manipuación del hombro
-	 if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) //rotate
-		 hombro += 0.04f;
-	 if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS) //
-		 hombro -= 0.04f;
-	 //manipulación del codo
-	 if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS) //rotate
-		 codo += 0.04f;
-	 if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS) //
-		 codo -= 0.04f;
-	 //manipulación de la muñeca
-	 if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS) //rotate
-		 muneca += 0.04f;
-	 if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS) //
-		 muneca -= 0.04f;
-	 //manipulación dedo1
-	 if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS) //rotate
-		 dedo1 += 0.04f;
-	 if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS) //
-		 dedo1 -= 0.04f;
-	 //manipulación dedo2
-	 if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS) //rotate
-		 dedo2 += 0.04f;
-	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) //
-		 dedo2 -= 0.04f;
-	 //manipulación dedo3
-	 if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS) //rotate
-		 dedo2 += 0.04f;
-	 if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS) //
-		 dedo2 -= 0.04f;
-	 //manipulación dedo4
-	 if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS) //rotate
-		 dedo2 += 0.04f;
-	 if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) //
-		 dedo2 -= 0.04f;
- }
+ ////controlar movimiento en la ventana 
+ //void Inputs(GLFWwindow *window) {
+	// if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)  //GLFW_RELEASE
+	//	 glfwSetWindowShouldClose(window, true);
+	// if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+	//	 movX += 0.002f;
+	// if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+	//	 movX -= 0.002f;
+	// if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) //UP
+	//	 movY += 0.002f;
+	// if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) //DOWN
+	//	 movY -= 0.002f;
+	// if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+	//	 movZ -= 0.002f;
+	// if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+	//	 movZ += 0.002f;
+	// if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+	//	 rot += 0.015f;
+	// if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+	//	 rot -= 0.015f;
+	// //manipuación del hombro
+	// if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) //rotate
+	//	 hombro += 0.04f;
+	// if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS) //
+	//	 hombro -= 0.04f;
+	// //manipulación del codo
+	// if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS) //rotate
+	//	 codo += 0.04f;
+	// if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS) //
+	//	 codo -= 0.04f;
+	// //manipulación de la muñeca
+	// if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS) //rotate
+	//	 muneca += 0.04f;
+	// if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS) //
+	//	 muneca -= 0.04f;
+	// //manipulación dedo1
+	// if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS) //rotate
+	//	 dedo1 += 0.04f;
+	// if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS) //
+	//	 dedo1 -= 0.04f;
+	// //manipulación dedo2
+	// if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS) //rotate
+	//	 dedo2 += 0.04f;
+	// if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) //
+	//	 dedo2 -= 0.04f;
+	// //manipulación dedo3
+	// if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS) //rotate
+	//	 dedo2 += 0.04f;
+	// if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS) //
+	//	 dedo2 -= 0.04f;
+	// //manipulación cerrar mano
+	// if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS) //rotate
+	//	 dedo2 += 0.04f;
+	// if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) //
+	//	 dedo2 -= 0.04f;
 
+
+ //}
+
+ // Función Inputs con limitaciones
+ void Inputs(GLFWwindow* window) {
+	 if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		 glfwSetWindowShouldClose(window, true);
+
+	 if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		 movX = glm::clamp(movX + 0.002f, minX, maxX);
+	 if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		 movX = glm::clamp(movX - 0.002f, minX, maxX);
+
+	 if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+		 movY = glm::clamp(movY + 0.002f, minY, maxY);  // UP
+	 if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+		 movY = glm::clamp(movY - 0.002f, minY, maxY);  // DOWN
+
+	 if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		 movZ = glm::clamp(movZ - 0.002f, minZ, maxZ);
+	 if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		 movZ = glm::clamp(movZ + 0.002f, minZ, maxZ);
+
+	 if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+		 rot = glm::clamp(rot + 0.015f, minRot, maxRot);
+	 if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+		 rot = glm::clamp(rot - 0.015f, minRot, maxRot);
+
+	 // Manipulación del hombro
+	 if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
+		 hombro = glm::clamp(hombro + 0.04f, minAngle, maxAngle);
+	 if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
+		 hombro = glm::clamp(hombro - 0.04f, minAngle, maxAngle);
+
+	 // Manipulación del codo
+	 if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
+		 codo = glm::clamp(codo + 0.04f, minAngle, maxAngle);
+	 if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS)
+		 codo = glm::clamp(codo - 0.04f, minAngle, maxAngle);
+
+	 // Manipulación de la muñeca
+	 if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
+		 muneca = glm::clamp(muneca + 0.04f, minAngle, maxAngle);
+	 if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
+		 muneca = glm::clamp(muneca - 0.04f, minAngle, maxAngle);
+
+	 // Manipulación dedo1
+	 if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS)
+		 dedo1 = glm::clamp(dedo1 + 0.04f, minAngle, maxAngle);
+	 if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
+		 dedo1 = glm::clamp(dedo1 - 0.04f, minAngle, maxAngle);
+
+	 // Manipulación dedo2
+	 if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+		 dedo2 = glm::clamp(dedo2 + 0.04f, minAngle, maxAngle);
+	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
+		 dedo2 = glm::clamp(dedo2 - 0.04f, minAngle, maxAngle);
+
+	 // Manipulación dedo3
+	 if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
+		 dedo3 = glm::clamp(dedo3 + 0.04f, minAngle, maxAngle);
+	 if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS)
+		 dedo3 = glm::clamp(dedo3 - 0.04f, minAngle, maxAngle);
+
+	 //// Manipulación cerrar mano
+	 //if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
+		// cerrarMano = gml::clamp(cerrarMano + 0.04f, minAngle, maxAngle);
+	 //if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS)
+		// cerrarMano = gml::clamp(cerrarMano - 0.04f, minAngle, maxAngle);
+ }
