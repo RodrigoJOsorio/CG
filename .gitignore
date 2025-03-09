@@ -1,3 +1,5 @@
 "*.ipch" 
 "ConfigInicial/.vs/ConfigInicial/v17/ipch/" 
 ".vs/" 
+".vs/" 
+"git-filter-repo" 
