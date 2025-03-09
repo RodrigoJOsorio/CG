@@ -1,2 +1,9 @@
-﻿  Modelado_Jerarquico.cpp
+﻿  Carga de Modelos.cpp
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(116,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(220,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(221,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(225,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(226,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(228,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(229,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
   ConfigInicial.vcxproj -> C:\Github\CG\Debug\ConfigInicial.exe
