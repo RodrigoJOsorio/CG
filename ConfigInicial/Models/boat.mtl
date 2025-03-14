@@ -1,0 +1,89 @@
+# Blender 4.3.2 MTL File: 'None'
+# www.blender.org
+
+newmtl Material_#14
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd RustyPaintedMetal01_2K_BaseColor.png
+map_Bump -bm 1.000000 Map #3
+
+newmtl Material_#15
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Wood02_2K_BaseColor.png
+map_Bump -bm 1.000000 Map #8
+
+newmtl Material_#16
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Wood02_2K_BaseColor.png
+map_Bump -bm 1.000000 Map #8
+
+newmtl Material_#17
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd PaintedMetal02_2K_BaseColor.png
+map_Bump -bm 1.000000 Map #15
+
+newmtl Material_#18
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd OldIron01_2K_BaseColor.png
+map_Bump -bm 1.000000 Map #21
+
+newmtl Material_#19
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 0.686274
+illum 9
+map_Kd Wood08_2K_BaseColor.png
+map_Bump -bm 1.000000 Map #26
+
+newmtl Material_#20
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd MaderaXd.png
+map_Bump -bm 1.000000 Map #26
+
+newmtl Material_#21
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd LuxXd.png

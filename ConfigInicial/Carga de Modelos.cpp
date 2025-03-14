@@ -1,7 +1,7 @@
 /*
 Osorio Angeles Rodrigo Jafet 318008893
-Fecha de entrega: 09/03/2025
-Previo 05, carga de modelos 3D en Visual
+Fecha de entrega: 14/03/2025
+Practica 05, carga de modelos 3D en Visual, al menos 5 modelos
 */
 
 // Std. Includes
@@ -62,7 +62,7 @@ int main( )
     glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );
     
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Rodrigo Osorio 09/03/2025 --Carga de modelos y camara sintetica--", nullptr, nullptr );
+    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Rodrigo Osorio 13/03/2025  -PRACTICA 05-   --Carga de modelos y camara sintetica--", nullptr, nullptr );
     
     if ( nullptr == window )
     {
@@ -106,8 +106,16 @@ int main( )
     //pasar parametros que son la ruta del modelo, models es la carpeta
     Model dog((char*) "Models/RedDog.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
-    
+
+    Model paloma((char*)"Models/Paloma.obj");
+
+    Model boat((char*)"Models/Boat.obj");
+
+    Model star((char*)"Models/Starfish.obj");
   
+    Model tiller((char*)"Models/Tiller.obj");
+
+    Model shark((char*)"Models/Shark.obj");
 
     // Game loop
     while (!glfwWindowShouldClose(window))
@@ -138,18 +146,59 @@ int main( )
         
         dog.Draw(shader);
 
-        //Herramientas de transformacion
-        model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(2.0f, 2.0f,2.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        dog.Draw(shader);
+        ////Herramientas de transformacion
+        //model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f));
+        //model = glm::scale(model, glm::vec3(2.0f, 2.0f,2.0f));
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        //dog.Draw(shader);
 
-        //Herramientas de transformacion
-        model = glm::translate(model, glm::vec3(-5.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
-        model = glm::rotate(model, 0.5f, glm::vec3(1.0f, 0.0f, 0.0f));
+        ////Herramientas de transformacion
+        //model = glm::translate(model, glm::vec3(-5.0f, 0.0f, 0.0f));
+        //model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+        //model = glm::rotate(model, 0.5f, glm::vec3(1.0f, 1.0f, 0.0f));
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        //dog.Draw(shader);
+
+        //Paloma 
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.0f, -0.5f, 0.8f));
+        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        dog.Draw(shader);
+        paloma.Draw(shader);
+
+        //Boat
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.0f, -0.2f, 0.0f));
+        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        boat.Draw(shader);
+
+        //Starfish
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(1.0f, -1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        star.Draw(shader);
+
+        //Shark
+
+        //Tiller
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+        model = glm::rotate(model, 90.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        tiller.Draw(shader);
+
+        //shark
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(-1.0f, -1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        shark.Draw(shader);
+
+
+
 
 
         // Swap the buffers

@@ -1,9 +1,14 @@
 ﻿  Carga de Modelos.cpp
-C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(116,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(220,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(221,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(225,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(226,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(228,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(229,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(124,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(269,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(270,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(274,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(275,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(277,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Carga de Modelos.cpp(278,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
+soil2-debug.lib(etc1_utils.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(etc1_utils.obj)' o en 'C:\Github\CG\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_DXT.obj)' o en 'C:\Github\CG\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(image_helper.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_helper.obj)' o en 'C:\Github\CG\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(SOIL2.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(SOIL2.obj)' o en 'C:\Github\CG\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
   ConfigInicial.vcxproj -> C:\Github\CG\Debug\ConfigInicial.exe

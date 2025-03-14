@@ -1,0 +1,13 @@
+# Blender 4.0.1 MTL File: 'Animal_Remesh joined edited save pred UV ifx po automatizaci.blend'
+# www.blender.org
+
+newmtl Seagull_Quad_Material
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Seagull_Quad_Diffuse.png
+map_Ns Seagull_Quad_Roughness.png
+map_Bump -bm 1.000000 Seagull_Quad_Normal.png

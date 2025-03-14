@@ -1,0 +1,71 @@
+newmtl MATERIAL_DEFAULTMAT
+illum 7
+Kd 0.735357 0.735357 0.735357
+adobe_interior_color 1 1 1
+Ni 1.5
+adobe_density 0
+Tr 0
+d 1
+Ka 0 0 0
+Ke 1 1 1
+Pm 0
+adobe_translucence 0
+Pr 0.298039
+Ns 16
+Ks 1 1 1
+adobe_glow 0
+map_Kd MATERIAL_DEFAULTMAT_base_color.png
+
+newmtl MATERIAL_PM3D_SPHERE3D1_3
+illum 7
+Kd 0.735357 0.735357 0.735357
+adobe_interior_color 1 1 1
+Ni 1.5
+adobe_density 0
+Tr 0
+d 1
+Ka 0 0 0
+Ke 1 1 1
+Pm 0
+adobe_translucence 0
+Pr 0.298039
+Ns 16
+Ks 1 1 1
+adobe_glow 0
+map_Kd MATERIAL_PM3D_SPHERE3D1_3_base_color.png
+
+newmtl MATERIAL_DEFAULTMATERIAL
+illum 7
+Kd 0 0 0
+adobe_interior_color 1 1 1
+Ni 1.5
+adobe_density 0
+Tr 0
+d 1
+Ka 0 0 0
+Ke 1 1 1
+Pm 0
+adobe_translucence 0
+Pr 0.258824
+Ns 16
+Ks 1 1 1
+adobe_glow 0
+
+newmtl MATERIAL_DEFAULTMATERIAL 2
+illum 7
+Kd 0.735357 0.735357 0.735357
+adobe_interior_color 1 1 1
+Ni 1.5
+adobe_density 0
+Tr 0
+d 1
+Ka 0 0 0
+Ke 1 1 1
+Pm 0
+adobe_translucence 0
+map_Pr MATERIAL_DEFAULTMATERIAL_roughness.png
+Ns 16
+Ks 1 1 1
+adobe_glow 0
+map_Kd MATERIAL_DEFAULTMATERIAL_base_color.png
+norm MATERIAL_DEFAULTMATERIAL_normal.png

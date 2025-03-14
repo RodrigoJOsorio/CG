@@ -219,6 +219,9 @@ GLint TextureFromFile(const char *path, string directory)
 
 	unsigned char *image = SOIL_load_image(filename.c_str(), &width, &height, 0, SOIL_LOAD_RGB);
 
+	if (image == nullptr)
+		std::cerr << "WARN: Texture " + filename + " not found\n";
+
 	// Assign texture to ID
 	glBindTexture(GL_TEXTURE_2D, textureID);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
