@@ -23,11 +23,13 @@
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Carga de Modelos.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Shader\lamp.frag" />
+    <None Include="Shader\lamp.vs" />
     <None Include="Shader\modelLoading.frag" />
     <None Include="Shader\modelLoading.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Texturizado.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
