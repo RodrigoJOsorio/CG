@@ -1,9 +1,9 @@
 ﻿  Texturizado.cpp
-C:\Github\CG\ConfigInicial\Texturizado.cpp(205,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Github\CG\ConfigInicial\Texturizado.cpp(309,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Github\CG\ConfigInicial\Texturizado.cpp(310,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Github\CG\ConfigInicial\Texturizado.cpp(314,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Github\CG\ConfigInicial\Texturizado.cpp(315,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Github\CG\ConfigInicial\Texturizado.cpp(317,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Github\CG\ConfigInicial\Texturizado.cpp(318,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Texturizado.cpp(207,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Texturizado.cpp(311,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Texturizado.cpp(312,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Texturizado.cpp(316,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Texturizado.cpp(317,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Texturizado.cpp(319,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Texturizado.cpp(320,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
   ConfigInicial.vcxproj -> C:\Github\CG\Debug\ConfigInicial.exe

@@ -175,7 +175,9 @@ int main()
 	//image = stbi_load("images/checker_Tex.png", &textureWidth, &textureHeight, &nrChannels,0);
 	//image = stbi_load("images/Tierra.jpg", &textureWidth, &textureHeight, &nrChannels, 0);
 	// ventana con transparencia
-	image = stbi_load("images/window.png", &textureWidth, &textureHeight, &nrChannels, 0);
+	//image = stbi_load("images/window.png", &textureWidth, &textureHeight, &nrChannels, 0);
+	//image = stbi_load("images/Blue.png", &textureWidth, &textureHeight, &nrChannels, 0);
+	image = stbi_load("images/White.png", &textureWidth, &textureHeight, &nrChannels, 0);
 
 	glBindTexture(GL_TEXTURE_2D, texture1);	// se enlaza con el tipo de textura 2D con id
 	// se convierte en una textura, 0, RGB, ancho, altura, tipo
