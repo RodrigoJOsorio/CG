@@ -1,7 +1,8 @@
 /*
-Previo 08, Iluminación de objetos 3D        Rodrigo Jafet Osorio Angeles
-Fecha de entrega: 23/03/2025                318008893
+Previo 08, Iluminación de objetos 3D            Rodrigo Jafet Osorio Angeles
+Fecha de entrega: 23/03/2025                    318008893
 */
+
 // Std. Includes
 #include <string>
 
@@ -231,6 +232,7 @@ int main()
 
 
         // Set lights properties
+        // Hacer las luces como variables para dia y noche 
         glUniform3f(glGetUniformLocation(lightingShader.Program, "light.ambient"), 0.3f, 0.3f, 0.3f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "light.diffuse"), 0.3f, 0.3f, 0.3f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "light.specular"), 0.8f, 0.0f, 0.0f);

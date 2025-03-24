@@ -38,6 +38,12 @@
     <None Include="Shader\lamp.vs">
       <Filter>Archivos de origen\Shader</Filter>
     </None>
+    <None Include="Shader\lighting.frag">
+      <Filter>Archivos de origen\Shader</Filter>
+    </None>
+    <None Include="Shader\lighting.vs">
+      <Filter>Archivos de origen\Shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Iluminacion.cpp">
