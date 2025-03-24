@@ -10,4 +10,7 @@
 "*.jpg" 
 "*.obj" 
 "*.mtl" 
-"*.ipch" 
+"*.ipch"
+"ILUMINACION.ipch" 
+".vs/ConfigInicial"
+"ConfigInicial/.vs"

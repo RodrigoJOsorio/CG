@@ -1,7 +1,6 @@
 /*
-Previo 08, Iluminación de objetos 3D 
-Osorio Angeles Rodrigo Jafet 318008893
-Fecha de entrega: 23/03/2025
+Previo 08, Iluminación de objetos 3D        Rodrigo Jafet Osorio Angeles
+Fecha de entrega: 23/03/2025                318008893
 */
 // Std. Includes
 #include <string>
@@ -186,6 +185,11 @@ int main()
 
     //Carga de textura de los modelos 
     image = stbi_load("Models/Texture_albedo.jpg", &textureWidth, &textureHeight, &nrChannels, 0);
+    
+    image = stbi_load("Models/Seagull_Quad_Diffuse.png", &textureWidth, &textureHeight, &nrChannels, 0);
+    image = stbi_load("Models/Seagull_Quad_Roughness.png", &textureWidth, &textureHeight, &nrChannels, 0);
+    image = stbi_load("Models/Seagull_Quad_Normal", &textureWidth, &textureHeight, &nrChannels, 0);
+
 
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
@@ -255,13 +259,17 @@ int main()
         glBindVertexArray(VAO);
        
         // glDrawArrays(GL_TRIANGLES, 0, 36); //Cubo
-        red_dog.Draw(lightingShader);
-        
+        // red_dog.Draw(lightingShader);
+        paloma.Draw(lightingShader);
+
+
 
         glBindVertexArray(0);
 
 
 
+        // Carga de luz 
+        // Cargar otra vez el shader y la relación 
 
         lampshader.Use();
         glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
@@ -273,6 +281,8 @@ int main()
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
         glBindVertexArray(0);
+
+
 
         // Swap the buffers
         glfwSwapBuffers(window);
