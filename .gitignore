@@ -1,17 +1,19 @@
-"*.ipch" 
-"ConfigInicial/.vs/ConfigInicial/v17/ipch/" 
-".vs/" 
-".vs/" 
-"git-filter-repo" 
-".vs/" 
-"git-filter-repo" 
-"*.obj" 
-"*.png" 
-"*.jpg" 
-"*.obj" 
-"*.mtl" 
-"*.ipch"
-"ILUMINACION.ipch" 
-".vs/ConfigInicial"
-"ConfigInicial/.vs"
+# Ignorar archivos de caché y configuración de Visual Studio
+.vs/
+ConfigInicial/.vs/
+.vs/ConfigInicial/
+ConfigInicial/.vs/ConfigInicial/v17/ipch/
+
+# Ignorar archivos específicos de compilación y caché
+*.ipch
+ILUMINACION.ipch
+*.obj
+*.mtl
+*.png
+*.jpg
+
+# Ignorar archivos y carpetas relacionados con depuración
 /Debug
+
+# Otros archivos generados automáticamente
+git-filter-repo
