@@ -1,0 +1,9 @@
+﻿  Iluminacion.cpp
+C:\Github\CG\ConfigInicial\Iluminacion.cpp(132,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Iluminacion.cpp(306,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Iluminacion.cpp(307,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Iluminacion.cpp(310,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Iluminacion.cpp(311,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Iluminacion.cpp(312,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Github\CG\ConfigInicial\Iluminacion.cpp(313,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  ConfigInicial.vcxproj -> C:\Github\CG\Debug\ConfigInicial.exe
