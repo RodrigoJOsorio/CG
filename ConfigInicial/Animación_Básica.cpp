@@ -1,6 +1,6 @@
 /*
-Previo 10, animación básica			Osorio Angeles Rodrigo Jafet
-Fecha de entrega: 06/04/2025		318008893
+Practica 10, animación compleja		Osorio Angeles Rodrigo Jafet
+Fecha de entrega: 10/04/2025		318008893
 */
 
 #include <iostream>
@@ -31,8 +31,8 @@ Fecha de entrega: 06/04/2025		318008893
 
 // ----------------------------------------------------------------------------------------
 // Function prototypes
-void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
-void MouseCallback(GLFWwindow *window, double xPos, double yPos);
+void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
+void MouseCallback(GLFWwindow* window, double xPos, double yPos);
 void DoMovement();
 void Animation();
 
@@ -51,6 +51,7 @@ bool firstMouse = true;
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
 bool active;
+
 
 // Positions of the point lights
 glm::vec3 pointLightPositions[] = {
@@ -105,11 +106,10 @@ float vertices[] = {
 };
 
 
-
 glm::vec3 Light1 = glm::vec3(0);
 
 //Animación rotación 
-float rotBall = 0;		// variable para la rotación del balón 
+float rot = 0;		// variable para la rotación del balón 
 bool AnimBall = false;	// Activar o desactivar animación 
 
 // Animación en eje Y
@@ -117,7 +117,11 @@ float ballY = 0;           // Posición vertical actual de la pelota en el eje Y
 bool vertical = false;		// Activar o desactivar animación 
 float ballYDirection = 1.0f;  // 1 para subir, -1 para bajar
 
-
+// atributos de la animación de rebote
+bool reboteActivo = false;
+float reboteInicio = 0.0f;
+float duracionRebote = 60.0f; // grados durante los cuales dura el rebote
+float reboteAmplitud = 0.5f; // amplitud máxima del rebote
 
 // Variables de tipo flotantes para calcular deltaTime, y los frames que pasa para determinar 
 // el intervalo de tiempo 
@@ -137,7 +141,7 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Rodrigo Osorio 318008893  ---Animacion basica---", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Rodrigo Osorio 10/04/2025  ---Animacion basica con rebote---", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
@@ -174,7 +178,7 @@ int main()
 
 	Shader lightingShader("Shader/lighting.vs", "Shader/lighting.frag");
 	Shader lampShader("Shader/lamp.vs", "Shader/lamp.frag");
-	
+
 	//--------------------------------------------------------------------------
 	// models
 	Model Dog((char*)"Models/RedDog.obj");
@@ -209,7 +213,7 @@ int main()
 	{
 
 		// calcular frame actual glwGetTime
-		// Se operan los frame actual y anterior 
+		// Se operan los frame actual y anterior con cada ciclo 
 		// El frame calculado se guarda lastFrame
 		// Calculate deltatime of current frame
 		GLfloat currentFrame = glfwGetTime();
@@ -224,19 +228,15 @@ int main()
 		// Clear the colorbuffer
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	   
+
 		// OpenGL options
 		glEnable(GL_DEPTH_TEST);
 
-		
-		
-		
-	
 
 		// Use cooresponding shader when setting uniforms/drawing objects
 		lightingShader.Use();
 
-        glUniform1i(glGetUniformLocation(lightingShader.Program, "diffuse"), 0);
+		glUniform1i(glGetUniformLocation(lightingShader.Program, "diffuse"), 0);
 		//glUniform1i(glGetUniformLocation(lightingShader.Program, "specular"),1);
 
 		GLint viewPosLoc = glGetUniformLocation(lightingShader.Program, "viewPos");
@@ -245,28 +245,28 @@ int main()
 
 		// Directional light
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.direction"), -0.2f, -1.0f, -0.3f);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"),0.6f,0.6f,0.6f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), 0.6f, 0.6f, 0.6f);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.diffuse"), 0.6f, 0.6f, 0.6f);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.specular"),0.3f, 0.3f, 0.3f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.specular"), 0.3f, 0.3f, 0.3f);
 
 
 		// Proceso de la fuente de luz, se calcula por funciones trigonometricas
 		// por parámetros de la posición
-		
-		// Point light 1
-	    glm::vec3 lightColor;
-		lightColor.x= abs(sin(glfwGetTime() *Light1.x));
-		lightColor.y= abs(sin(glfwGetTime() *Light1.y));
-		lightColor.z= sin(glfwGetTime() *Light1.z);
 
-		
+		// Point light 1
+		glm::vec3 lightColor;
+		lightColor.x = abs(sin(glfwGetTime() * Light1.x));
+		lightColor.y = abs(sin(glfwGetTime() * Light1.y));
+		lightColor.z = sin(glfwGetTime() * Light1.z);
+
+
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].position"), pointLightPositions[0].x, pointLightPositions[0].y, pointLightPositions[0].z);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].ambient"), lightColor.x,lightColor.y, lightColor.z);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].diffuse"), lightColor.x,lightColor.y,lightColor.z);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].ambient"), lightColor.x, lightColor.y, lightColor.z);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].diffuse"), lightColor.x, lightColor.y, lightColor.z);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].specular"), 1.0f, 0.2f, 0.2f);
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].constant"), 1.0f);
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].linear"), 0.045f);
-		glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].quadratic"),0.075f);
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].quadratic"), 0.075f);
 
 
 		// SpotLight
@@ -280,7 +280,7 @@ int main()
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.quadratic"), 0.7f);
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.cutOff"), glm::cos(glm::radians(12.0f)));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.outerCutOff"), glm::cos(glm::radians(18.0f)));
-		
+
 
 		// Set material properties
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 5.0f);
@@ -301,40 +301,126 @@ int main()
 
 		glm::mat4 model(1);
 
-	
-		
+
+
 		//Carga de modelos  
-        view = camera.GetViewMatrix();	
+		view = camera.GetViewMatrix();
+
+		// piso
 		model = glm::mat4(1);
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Piso.Draw(lightingShader);
 
-		model = glm::mat4(1);
+
+		// Calcular el offset para el rebote 
+		float bounceOffset = 0.0f;
+		if (reboteActivo) {
+			float currentBallAngle = fmod(rot, 360.0f);
+			if (currentBallAngle < 0.0f)
+				currentBallAngle += 360.0f;
+			float t = currentBallAngle - reboteInicio;
+			if (t < 0.0f)
+				t += 360.0f;
+			if (t < duracionRebote) {
+				bounceOffset = reboteAmplitud * sin(glm::radians(t * 180.0f / duracionRebote));
+			}
+			else {
+				reboteActivo = false;
+			}
+		}
+
+		model = glm::mat4(1.0f);
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, -1.0f, 0.0f));
+		// Agregar el offset vertical al perro
+		model = glm::translate(model, glm::vec3(1.5f, bounceOffset, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 0);
 		Dog.Draw(lightingShader);
 
 
+		//// Dog 
+		//model = glm::mat4(1.0f);
+		//// Rotar alrededor del eje Y
+		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, -1.0f, 0.0f));
+		//// Trasladar X, el desplazamiento se aplica ya rotado
+		//model = glm::translate(model, glm::vec3(1.5f, 0.0f, 0.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 0);
+		//Dog.Draw(lightingShader);
 
-		// en el modelo de pelota se tiene la animación
+
+
+		/*model = glm::mat4(1);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 0);
+
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, -1.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Dog.Draw(lightingShader);*/
+
+
+
+		// Calcula el offset del rebote (ballBounceOffset)
+		float ballBounceOffset = 0.0f;
+		if (reboteActivo) {
+			float currentBallAngle = fmod(rot, 360.0f);
+			if (currentBallAngle < 0.0f)
+				currentBallAngle += 360.0f;
+			float t = currentBallAngle - reboteInicio;
+			if (t < 0.0f)
+				t += 360.0f;
+			if (t < duracionRebote) {
+				ballBounceOffset = reboteAmplitud * sin(glm::radians(t * 180.0f / duracionRebote));
+			}
+			else {
+				reboteActivo = false;
+			}
+		}
+
+		// Carga de modelo de la pelota
 		model = glm::mat4(1);
-		glEnable(GL_BLEND);//Avtiva la funcionalidad para trabajar el canal alfa
+		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		// Aquí se traduce la pelota en Y usando ballY más el offset calculado.
+		model = glm::translate(model, glm::vec3(0.0f, ballY + ballBounceOffset - 0.3f, 0.0f));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(1.5f, 0.5f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 1);
+		Ball.Draw(lightingShader);
+		glDisable(GL_BLEND);
 
-		// Aplicando la translación solo en el eje Y 
-		model = glm::translate(model, glm::vec3(0.0f, ballY, 0.0f));
-		// se aplica una rotación afectada por el ángulo y la variable rotBall, afectándola en el eje Y
-		model = glm::rotate(model, glm::radians(rotBall), glm::vec3(0.0f, 1.0f, 0.0f));
-		
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-	    Ball.Draw(lightingShader); 
-		glDisable(GL_BLEND);  //Desactiva el canal alfa 
+
+
+		//// en el modelo de pelota se tiene la animación
+		//model = glm::mat4(1);
+		//glEnable(GL_BLEND);//Avtiva la funcionalidad para trabajar el canal alfa
+		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 1);
+		//// Antes de renderizar la pelota, calculamos el offset del rebote:
+		//float ballBounceOffset = 0.0f;
+		//if (reboteActivo) {
+		//	float t = rot - reboteInicio; // usa el mismo cálculo de Animation()
+		//	if (t < duracionRebote) {
+		//		ballBounceOffset = reboteAmplitud * sin(glm::radians(t * 180.0f / duracionRebote));
+		//	}
+		//}
+		//// Aplicar una traslación en Y que incluya el offset del rebote
+		//model = glm::translate(model, glm::vec3(0.0f, ballY + ballBounceOffset, 0.0f));
+		////// Aplicando la translación solo en el eje Y 
+		////model = glm::translate(model, glm::vec3(0.0f, ballY, 0.0f));
+		//// se aplica una rotación afectada por el ángulo y la variable rotBall, afectándola en el eje Y
+		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+
+		//// Translación en eje X para alejar del origen y subir en Y
+		//model = glm::translate(model, glm::vec3(1.5f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//Ball.Draw(lightingShader);
+		//glDisable(GL_BLEND);  //Desactiva el canal alfa 
 
 
 		glBindVertexArray(0);
-	
+
 
 		// Also draw the lamp object, again binding the appropriate shader
 		lampShader.Use();
@@ -351,14 +437,14 @@ int main()
 		model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		// Draw the light object (using light's vertex attributes)
-		
-			model = glm::mat4(1);
-			model = glm::translate(model, pointLightPositions[0]);
-			model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
-			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-			glBindVertexArray(VAO);
-			glDrawArrays(GL_TRIANGLES, 0, 36);
-		
+
+		model = glm::mat4(1);
+		model = glm::translate(model, pointLightPositions[0]);
+		model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
 		glBindVertexArray(0);
 
 
@@ -434,11 +520,11 @@ void DoMovement()
 	{
 		pointLightPositions[0].z += 0.01f;
 	}
-	
+
 }
 
 // Is called whenever a key is pressed/released via GLFW
-void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode)
+void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
 	if (GLFW_KEY_ESCAPE == key && GLFW_PRESS == action)
 	{
@@ -463,7 +549,7 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 		if (active)
 		{
 			Light1 = glm::vec3(1.0f, 1.0f, 0.0f);
-			
+
 		}
 		else
 		{
@@ -473,47 +559,121 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 	if (keys[GLFW_KEY_N])
 	{
 		AnimBall = !AnimBall;
-		
+
 	}
-	if (keys[GLFW_KEY_M]) {
+	/*if (keys[GLFW_KEY_M]) {
 		vertical = !vertical;
-	}
+	}*/
 
 }
+
 // función animación dependiendo de la variable booleana, se incrementa un valor cte
 
 void Animation() {
-	if (AnimBall)
-	{
-		rotBall += 0.05f;
-		//printf("%f", rotBall);
+	if (AnimBall) {
+		rot += 0.06f; // Incremento de la rotación para la animación
 	}
-	else
-	{
-		//rotBall = 0.0f;
+	// Detección del cruce entre la pelota y el perro
+	float ballAngle = fmod(rot, 360.0f);
+	if (ballAngle < 0.0f)
+		ballAngle += 360.0f;
+	float dogAngle = fmod(-rot, 360.0f);
+	if (dogAngle < 0.0f)
+		dogAngle += 360.0f;
+	float angleDiff = fabs(ballAngle - dogAngle);
+	if (angleDiff > 180.0f)
+		angleDiff = 360.0f - angleDiff;
+	bool isCrossing = (angleDiff < 3.0f);  // umbral de sensibilidad
+
+	// Si se detecta el cruce y el rebote no está activo, se activa:
+	if (isCrossing && !reboteActivo) {
+		reboteActivo = true;
+		reboteInicio = ballAngle;  // guardamos el ángulo en el que inicia el rebote
 	}
 
-	if (vertical) {
-
-		ballY += ballYDirection * 0.001f;  // Actualiza con una velocidad fija
-		// cuando llega a la fuente de luz 
-		if (ballY >= 2.0f) {
-			ballY = 2.0f;
-			ballYDirection = -1.0f;
+	// Actualización de la parte de rebote
+	// Se calculará el offset en el renderizado
+	if (reboteActivo) {
+		float t = ballAngle - reboteInicio;
+		if (t < 0.0f)
+			t += 360.0f;  // para evitar valores negativos
+		if (t >= duracionRebote) {
+			reboteActivo = false;
 		}
-		// desde la nariz del perro
-		else if (ballY <= 0.0f) {
-			ballY = 0.0f;
-			ballYDirection = 1.0f;
-		}
-	}
-	else
-	{
-		//ballY = 0.0f;
 	}
 }
 
-void MouseCallback(GLFWwindow *window, double xPos, double yPos)
+
+//void Animation() {
+//	if (AnimBall) {
+//		rot += 0.04f;
+//	}
+//
+//	//if (vertical) {
+//	//	ballY += ballYDirection * 0.001f;  // Actualiza la posición vertical base
+//	//	if (ballY >= 2.0f) {
+//	//		ballY = 2.0f;
+//	//		ballYDirection = -1.0f;
+//	//	}
+//	//	else if (ballY <= 0.0f) {
+//	//		ballY = 0.0f;
+//	//		ballYDirection = 1.0f;
+//	//	}
+//	//}
+//
+//	// Actualización de la animación de rebote
+//	if (reboteActivo) {
+//		float t = rot - reboteInicio; // Medimos la diferencia en grados (o ajusta si usas tiempo real)
+//		if (t < duracionRebote) {
+//			// Calculamos un offset de rebote usando una función seno
+//			// Esto hará que el offset suba y luego baje durante la duración del rebote.
+//			// Por ejemplo: cuando t=0, sin(0)=0; cuando t=duracionRebote/2, sin(pi/2)=1; y vuelve a 0 al final.
+//			// Convertimos t a radianes: t * (pi / duracionRebote).
+//			float offsetBounce = reboteAmplitud * sin(glm::radians(t * 180.0f / duracionRebote));
+//			// Almacenamos o usamos offsetBounce para modificar la posición de la pelota.
+//			// Por ejemplo, podríamos almacenar este valor en una variable global:
+//			// ballBounceOffset = offsetBounce;
+//			// O si la sumamos directamente en el renderizado, lo haremos allí.
+//		}
+//		else {
+//			// Termina el rebote
+//			reboteActivo = false;
+//		}
+//	}
+//}
+
+//void Animation() {
+//	if (AnimBall)
+//	{
+//		rot += 0.04f;
+//		//printf("%f", rot);
+//	}
+//	else
+//	{
+//		//rotBall = 0.0f;
+//	}
+//
+//	if (vertical) {
+//
+//		ballY += ballYDirection * 0.001f;  // Actualiza con una velocidad fija
+//		// cuando llega a la fuente de luz 
+//		if (ballY >= 2.0f) {
+//			ballY = 2.0f;
+//			ballYDirection = -1.0f;
+//		}
+//		// desde la nariz del perro
+//		else if (ballY <= 0.0f) {
+//			ballY = 0.0f;
+//			ballYDirection = 1.0f;
+//		}
+//	}
+//	else
+//	{
+//		//ballY = 0.0f;
+//	}
+//}
+
+void MouseCallback(GLFWwindow* window, double xPos, double yPos)
 {
 	if (firstMouse)
 	{
